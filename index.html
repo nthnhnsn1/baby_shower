@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Baby Shower</title>
+  <title>BABY SHOWER</title>
   <style>
-    body { margin: 0; background: #f9f9f9; font-family: -apple-system, sans-serif; }
-    /* Updated header font to Cheltenham with web-safe fallbacks */
-    .header { text-align: center; padding: 25px; font-size: 32px; color: #333; font-weight: bold; font-family: 'Cheltenham', Georgia, serif; }
+    body { margin: 0; background: #f9f9f9; font-family: Arial, sans-serif; }
+    
+    .header-container { text-align: center; padding: 30px 20px 20px 20px; color: #333; }
+    .header { font-size: 42px; font-weight: lighter; }
+    .subheader { font-size: 22px; font-weight: lighter; margin-top: 8px; color: #666; }
+    
     .gallery { display: flex; flex-direction: column; gap: 20px; padding: 15px; align-items: center; }
     .gallery img { width: 100%; max-width: 600px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     
@@ -20,7 +23,10 @@
 </head>
 <body>
 
-  <div class="header">Baby Shower</div>
+  <div class="header-container">
+    <div class="header">BABY SHOWER</div>
+    <div class="subheader">17 OCT 2026</div>
+  </div>
   
   <div class="gallery" id="gallery"></div>
 
@@ -31,7 +37,7 @@
   </div>
 
   <script>
-    // Updated to 5 total photos
+    // Keep at 5 until you are ready to upload the rest of the batch
     const totalPhotos = 5;
     const gallery = document.getElementById('gallery');
 
