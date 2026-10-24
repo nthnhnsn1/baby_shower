@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Shower</title>
+  <style>
+    body { margin: 0; background: #f9f9f9; font-family: -apple-system, sans-serif; }
+    .header { text-align: center; padding: 25px; font-size: 28px; color: #333; font-weight: bold; }
+    .gallery { display: flex; flex-direction: column; gap: 20px; padding: 15px; align-items: center; }
+    /* Forces the image to take up the screen width but caps it for desktop viewers */
+    .gallery img { width: 100%; max-width: 600px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    
+    /* The pop-up overlay */
+    #modal { display: none; position: fixed; z-index: 10; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); }
+    #modal.show { display: flex; align-items: center; justify-content: center; flex-direction: column; }
+    #modal img { max-width: 95%; max-height: 85vh; border-radius: 4px; }
+    #close { position: absolute; top: 20px; right: 20px; color: white; font-size: 35px; cursor: pointer; background: none; border: none; }
+    .hint { color: rgba(255,255,255,0.7); margin-top: 15px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <div class="header">Baby Shower</div>
+  
+  <div class="gallery" id="gallery"></div>
+
+  <div id="modal" onclick="closeModal(event)">
+    <button id="close" onclick="closeModal(event)">&times;</button>
+    <img id="modal-img" src="" alt="Expanded photo">
+    <div class="hint">Press and hold photo to save</div>
+  </div>
+
+  <script>
+    // Update this number to your exact photo count
+    const totalPhotos = 60;
+    const gallery = document.getElementById('gallery');
+
+    for (let i = 1; i <= totalPhotos; i++) {
+      let img = document.createElement('img');
+      img.src = `photo-${i}.jpg`; 
+      img.loading = "lazy"; // Prevents phones from downloading all photos at once
+      img.onclick = function() { openModal(this.src); };
+      gallery.appendChild(img);
+    }
+
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    function openModal(src) {
+      modalImg.src = src;
+      modal.classList.add('show');
+    }
+
+    function closeModal(e) {
+      // Closes if they tap the background or the X, but not the image itself
+      if(e.target !== modalImg) {
+        modal.classList.remove('show');
+      }
+    }
+  </script>
+</body>
+</html>
