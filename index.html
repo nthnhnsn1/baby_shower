@@ -6,7 +6,8 @@
   <title>Baby Shower</title>
   <style>
     body { margin: 0; background: #f9f9f9; font-family: -apple-system, sans-serif; }
-    .header { text-align: center; padding: 25px; font-size: 28px; color: #333; font-weight: bold; }
+    /* Updated header font to Cheltenham with web-safe fallbacks */
+    .header { text-align: center; padding: 25px; font-size: 32px; color: #333; font-weight: bold; font-family: 'Cheltenham', Georgia, serif; }
     .gallery { display: flex; flex-direction: column; gap: 20px; padding: 15px; align-items: center; }
     .gallery img { width: 100%; max-width: 600px; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     
@@ -30,17 +31,14 @@
   </div>
 
   <script>
-    // Update this number as you upload more photos
-    const totalPhotos = 1;
+    // Updated to 5 total photos
+    const totalPhotos = 5;
     const gallery = document.getElementById('gallery');
 
     for (let i = 1; i <= totalPhotos; i++) {
       let img = document.createElement('img');
-      
-      // Formats the number with a leading zero (01, 02, 03, etc.) to match your uploaded file
       let photoNum = String(i).padStart(2, '0');
       img.src = `baby_shower_pics_${photoNum}.jpg`; 
-      
       img.loading = "lazy";
       img.onclick = function() { openModal(this.src); };
       gallery.appendChild(img);
